@@ -1,0 +1,38 @@
+{
+  "name": "Android Development",
+  "image": "mcr.microsoft.com/devcontainers/java:1-17-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/android-sdk:1": {
+      "version": "36",
+      "buildToolsVersion": "36.0.0",
+      "commandLineToolsVersion": "latest",
+      "acceptAndroidSdkLicenses": true
+    }
+  },
+  "containerEnv": {
+    "ANDROID_HOME": "/usr/local/android-sdk",
+    "ANDROID_SDK_ROOT": "/usr/local/android-sdk"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "fwcd.kotlin",
+        "redhat.vscode-xml",
+        "esafirm.android-ide"
+      ],
+      "settings": {
+        "java.jdt.ls.java.home": "/usr/local/sdkman/candidates/java/current",
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-17",
+            "path": "/usr/local/sdkman/candidates/java/current",
+            "default": true
+          }
+        ]
+      }
+    }
+  },
+  "postCreateCommand": "chmod +x gradlew && ./gradlew --no-daemon assembleDebug",
+  "remoteUser": "vscode"
+}
