@@ -6,7 +6,8 @@ ENV ANDROID_HOME=/usr/local/android-sdk
 ENV ANDROID_SDK_ROOT=/usr/local/android-sdk
 ENV PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
 
-RUN apt-get update \
+RUN rm -f /etc/apt/sources.list.d/yarn.list \
+    && apt-get update \
     && apt-get install -y --no-install-recommends curl unzip \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p ${ANDROID_HOME}/cmdline-tools \
